@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'easyMusic';
+  estilosMusicais: string[] = [
+    "Forró", "Rock", "Samba", "MPB", "Sertanejo", "Outros"
+  ];
 }
