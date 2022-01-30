@@ -1,0 +1,57 @@
+.navbar {
+    border: 2px solid black;
+    box-shadow: 0 0 0.5em black;
+    font-weight: bold;
+    border-radius: 1px;
+    font-family: 'Lato', sans-serif;
+}
+
+nav a img {
+    width: 40px;
+}
+
+.navbar-brand {
+    font-family: 'Supermercado One', cursive;
+    font-size: 1.7em;
+}
+
+#login {
+    font-weight: normal;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+#login:hover {
+    font-weight: bold;
+    color: purple;
+}
+
+.modal-body img {
+    width: 100%;
+}
+
+.listagem {
+    height: 80vh;
+    display: grid;
+    grid-template-areas: 
+        "empty1 empty1 empty1"
+        "empty2 buscar empty3"
+        "empty2 cards empty3";
+    grid-template-rows: 10% 20% 70%;
+    grid-template-columns: 5% 90% 5%;
+}
+
+.buscar {
+    grid-area: buscar;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.cards {
+    grid-area: cards;
+}
+
+.buscar-profissional {
+    width: 300px;
+}

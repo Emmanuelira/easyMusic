@@ -12,4 +12,28 @@ export class ListaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // title = 'easyMusic';
+
+  // estilosMusicais: estiloMusical[] = MOCK_ESTILOS_MUSICAIS;
+
+  // buscarForm: FormGroup = new FormGroup({
+  //   "estiloMusical": new FormControl(null, Validators.required)
+  // });
+
+  // exibirMensagemAlerta: boolean = false;
+
+  // constructor(
+  //   private router: Router
+  // ) {}
+  
+  // ngOnInit(): void {}
+
+  // permitirAvancar() {
+  //   if(null === this.buscarForm.get('estiloMusical')!.value) {
+  //     this.exibirMensagemAlerta = true;
+  //   } else {
+  //     this.router.navigate(['/lista', this.buscarForm.get('estiloMusical')!.value])
+  //   }
+  // }
+
 }
