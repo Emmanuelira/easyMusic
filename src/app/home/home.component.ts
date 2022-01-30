@@ -28,10 +28,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   permitirAvancar() {
-    if(null === this.buscarForm.get('estiloMusical')!.value) {
-      this.exibirMensagemAlerta = true;
+    if(this.buscarForm.get('estiloMusical')?.value) {
+      localStorage.setItem("estiloMusical", this.buscarForm.get('estiloMusical')?.value);
+      this.router.navigate(['/lista']);
     } else {
-      this.router.navigate(['/lista', this.buscarForm.get('estiloMusical')!.value])
+      this.exibirMensagemAlerta = true;
     }
   }
 

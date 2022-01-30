@@ -25,9 +25,9 @@
         <div class="input-group mr-5">
             <input type="text" class="form-control buscar-profissional" placeholder="Pesquise por bandas/artistas" aria-describedby="buscar-prof">
             <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="buscar-prof">
-                <img width="20" src="../../assets/images/lupa.png">
-            </button>
+                <button  data-toggle="modal" data-target="#modalLogin" class="btn btn-outline-secondary" type="button" id="buscar-prof">
+                    <img width="20" src="../../assets/images/lupa.png">
+                </button>
             </div>
         </div>
         
@@ -38,40 +38,27 @@
 </nav>
 <div class="listagem">
     <div class="buscar">
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" [formGroup]="buscarEstiloForm">
             <div class="mr-3">Selecione o estilo musical:</div>
-            <!-- <select class="form-control" formControlName="estiloMusical">
-                <option selected disabled value="null">Selecione o estilo musical...</option>
+            <select class="form-control estilo-musical" formControlName="estiloMusical">
+                <option selected disabled value="null">...</option>
                 <option *ngFor="let estilo of estilosMusicais" [value]="estilo.nome">{{ estilo.label }}</option>
-            </select> -->
-                
-                
-
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            </select>
+            <button [disabled]="buscarEstiloForm.invalid" class="btn btn-outline-success my-2 my-sm-0 ml-3" 
+                    (click)="pesquisar()">Pesquisar</button>
         </form>
     </div>
-    <div class="cards">
-        <div class="card" style="width: 18em;">
-            <img class="card-img-top" src="../../assets/images/not-found.jpg" alt="Imagem de capa do card">
+    <div class="cards card-columns">
+        <div *ngFor="let art of artistas" class="card mr-3" style="width: 18em;">
+            <img class="card-img-top" [src]="art.nomeImagem">
             <div class="card-body">
-                <h5 class="card-title">Título do card</h5>
-                <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p>
-                <a href="#" class="btn btn-primary">Visitar</a>
+                <h5 class="card-title">{{ art.nome }}</h5>
+                <p class="card-text">{{ art.descricao }}</p>
+                <button data-toggle="modal" data-target="#modalLogin" class="btn btn-outline-info">Visitar</button>
             </div>
+        </div>
+        <div class="mb-3" *ngIf="exibirMais">
+            <button type="button" class="btn btn-dark" (click)="aumentarQuantidadeCards()">Exibir mais</button>
         </div>
     </div>
 </div>
-<!-- 
-<div class="select-estilo-musical">
-    <form [formGroup]="buscarForm">
-      <select class="form-control" formControlName="estiloMusical">
-        <option selected disabled value="null">Selecione o estilo musical...</option>
-        <option *ngFor="let estilo of estilosMusicais" [value]="estilo.nome">{{ estilo.label }}</option>
-      </select>
-      <div class="alert alert-warning alert-dismissible fade show mt-1" role="alert" 
-           *ngIf="exibirMensagemAlerta">
-        <strong>Ops!</strong> Selecione um estilo musical antes de prosseguir.
-      </div>
-      <button type="button" class="btn btn-light mt-2" (click)="permitirAvancar()">Buscar</button>
-    </form>
-  </div> -->

@@ -37,7 +37,7 @@ nav a img {
         "empty1 empty1 empty1"
         "empty2 buscar empty3"
         "empty2 cards empty3";
-    grid-template-rows: 10% 20% 70%;
+    grid-template-rows: 10% 10% 80%;
     grid-template-columns: 5% 90% 5%;
 }
 
@@ -52,6 +52,19 @@ nav a img {
     grid-area: cards;
 }
 
+.card-columns {
+    column-count: 1;
+    
+}
+
 .buscar-profissional {
     width: 300px;
+}
+
+.estilo-musical {
+    width: 250px;
+}
+
+.btn-primary {
+    color: white;
 }

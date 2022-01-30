@@ -6,7 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { animation: 'homePage' } },
-  { path: 'lista/:estilo', component: ListaComponent, data: { animation: 'listaPage' } },
+  { path: 'lista', component: ListaComponent, data: { animation: 'listaPage' } },
   { path: '**', component: NotFoundComponent, data: { animation: 'notFoundPage' } }
 ];
 

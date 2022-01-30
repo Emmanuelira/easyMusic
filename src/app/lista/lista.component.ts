@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { artista, estiloMusical, MOCK_ARTISTAS, MOCK_ESTILOS_MUSICAIS } from '../shared/mocks';
 
 @Component({
   selector: 'app-lista',
@@ -7,33 +10,72 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaComponent implements OnInit {
 
-  constructor() { }
+  estilosMusicais: estiloMusical[] = MOCK_ESTILOS_MUSICAIS;
+
+  buscarEstiloForm: FormGroup = new FormGroup({
+    "estiloMusical": new FormControl(null, Validators.required)
+  });
+
+  artistasTotal: artista[] = MOCK_ARTISTAS;
+
+  artistas: artista[] = [];
+
+  quantidadeCards: number = 10;
+
+  exibirMais: boolean = false;
+
+  constructor() {}
 
   ngOnInit(): void {
+    this.carregarCardsEstilo();
   }
 
-  // title = 'easyMusic';
+  carregarCardsEstilo() {
+    this.artistasTotal = MOCK_ARTISTAS;
+    if(!this.estiloMusical) {
+      this.buscarEstiloForm.get('estiloMusical')?.setValue(localStorage.getItem("estiloMusical"));
+    }
+    if(this.estiloMusical !== 'all') {
+      this.artistasTotal = MOCK_ARTISTAS.filter(art => art.estiloMusical === this.estiloMusical);
+    }
+    this.artistasTotal.forEach(art => art.nomeImagem = `../../assets/images/${art.nomeImagem}`);
+    this.controleQuantidade();
+  }
 
-  // estilosMusicais: estiloMusical[] = MOCK_ESTILOS_MUSICAIS;
+  controleQuantidade() {
+    this.artistas = this.artistasTotal.slice(0,this.quantidadeCards);
+    this.showMore();
+  }
 
-  // buscarForm: FormGroup = new FormGroup({
-  //   "estiloMusical": new FormControl(null, Validators.required)
-  // });
+  showMore() {
+    if(this.estiloMusical !== 'all') {
+      const total = this.artistas.filter(art => art.estiloMusical === this.estiloMusical);
+      if (total.length > this.artistas.length) {
+        this.exibirMais = true;
+      } else {
+        this.exibirMais = false;
+      }
+    } else {
+      if(MOCK_ARTISTAS.length > this.artistas.length) {
+        this.exibirMais = true;
+      } else {
+        this.exibirMais = false;
+      }
+    }
+  }
 
-  // exibirMensagemAlerta: boolean = false;
+  aumentarQuantidadeCards() {
+    this.quantidadeCards += 10;
+    this.controleQuantidade();
+  }
 
-  // constructor(
-  //   private router: Router
-  // ) {}
-  
-  // ngOnInit(): void {}
+  pesquisar() {
+    this.quantidadeCards = 10;
+    this.carregarCardsEstilo();
+  }
 
-  // permitirAvancar() {
-  //   if(null === this.buscarForm.get('estiloMusical')!.value) {
-  //     this.exibirMensagemAlerta = true;
-  //   } else {
-  //     this.router.navigate(['/lista', this.buscarForm.get('estiloMusical')!.value])
-  //   }
-  // }
+  get estiloMusical() {
+    return this.buscarEstiloForm.get('estiloMusical')?.value;
+  }
 
 }
