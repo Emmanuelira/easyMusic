@@ -1,0 +1,24 @@
+.imagem {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 500px;
+    display: block;
+}
+
+.alinhar {
+    text-align: center;
+}
+
+button {
+    margin-top: 10%;
+}
+
+@media (max-width: 575.98px) { 
+    img {
+        margin-top: 20%;
+        width: 200px;
+    }
+}

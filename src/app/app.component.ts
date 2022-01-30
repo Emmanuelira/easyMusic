@@ -5,9 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'easyMusic';
-  estilosMusicais: string[] = [
-    "Forró", "Rock", "Samba", "MPB", "Sertanejo", "Outros"
-  ];
-}
+export class AppComponent {}

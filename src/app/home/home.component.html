@@ -1,0 +1,60 @@
+<!--Modal 'About us'-->
+<div class="modal fade" id="modalAboutUS" tabindex="-1" role="dialog" 
+     aria-labelledby="aboutUs" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="aboutUs"><strong>Desenvolvido por...</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="perfil">
+          <img class="img-perfil" src ="../assets/images/perfil.jpg">
+        </div>
+        <div class="info-pessoais">
+          <p><strong>Emmanuel da Nóbrega Lira</strong></p>
+          <span>
+            <a href="https://github.com/Emmanuelira" target="__blank">
+              <img class="rede-social github" src="../assets/images/github.png">
+            </a>
+          </span>
+          <span>
+            <a href="https://www.linkedin.com/in/emmanuel-da-nóbrega-lira-565392121/" target="__blank">
+              <img class="rede-social linkedin" src="../assets/images/linkedin.png">
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Página Inicial-->
+<div class="pg-inicial">
+  <div class="about-us">
+    <img data-toggle="modal" data-target="#modalAboutUS"src="../assets/images/about.png">
+  </div>
+  <div class="camada-pesquisa">
+    <div class="titulo-pesquisa">
+      easyMusic
+    </div>
+    <div class="pesquisa">
+      Encontre o artista perfeito para o seu evento!
+    </div>
+    <div class="select-estilo-musical">
+      <form [formGroup]="buscarForm">
+        <select class="form-control" formControlName="estiloMusical">
+          <option selected disabled value="null">Selecione o estilo musical...</option>
+          <option *ngFor="let estilo of estilosMusicais" [value]="estilo.nome">{{ estilo.label }}</option>
+        </select>
+        <div class="alert alert-warning alert-dismissible fade show mt-1" role="alert" 
+             *ngIf="exibirMensagemAlerta">
+          <strong>Ops!</strong> Selecione um estilo musical antes de prosseguir.
+        </div>
+        <button type="button" class="btn btn-light mt-2" (click)="permitirAvancar()">Buscar</button>
+      </form>
+    </div>
+  </div>
+</div>
