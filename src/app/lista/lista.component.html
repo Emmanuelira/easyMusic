@@ -57,6 +57,10 @@
                 <button data-toggle="modal" data-target="#modalLogin" class="btn btn-outline-info">Visitar</button>
             </div>
         </div>
+        <div class="sem-registros" *ngIf="!artistas?.length">
+            <img src="../../assets/images/sem-registros.jpg">
+            <p>Não foram encontrados registros!</p>
+        </div>
         <div class="mb-3" *ngIf="exibirMais">
             <button type="button" class="btn btn-dark" (click)="aumentarQuantidadeCards()">Exibir mais</button>
         </div>

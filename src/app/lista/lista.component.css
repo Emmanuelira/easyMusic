@@ -68,3 +68,19 @@ nav a img {
 .btn-primary {
     color: white;
 }
+
+.sem-registros {
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+}
+
+.sem-registros img {
+    width: 100px;
+}
+
+.sem-registros p {
+    margin-top: 30px;
+    font-size: 1.2em;
+}

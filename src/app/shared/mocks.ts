@@ -24,6 +24,10 @@ export const MOCK_ESTILOS_MUSICAIS: estiloMusical[] = [
       nome: "samba"
     },
     {
+      label: "Sertanejo",
+      nome: "sertanejo"
+    },
+    {
       label: "Todos",
       nome: "all"
     }
