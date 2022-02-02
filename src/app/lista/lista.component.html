@@ -22,14 +22,19 @@
       easyMusic
     </a>
     <div class="form-inline">
-        <div class="input-group mr-5">
-            <input type="text" class="form-control buscar-profissional" placeholder="Pesquise por bandas/artistas" aria-describedby="buscar-prof">
-            <div class="input-group-append">
-                <button  data-toggle="modal" data-target="#modalLogin" class="btn btn-outline-secondary" type="button" id="buscar-prof">
-                    <img width="20" src="../../assets/images/lupa.png">
-                </button>
+        <form [formGroup]="buscarNomeForm">
+            <div class="input-group mr-5">
+                <input type="text" class="form-control buscar-profissional" 
+                        placeholder="Pesquise por bandas/artistas" aria-describedby="buscar-prof"
+                        formControlName="nomeArtista">
+                <div class="input-group-append">
+                    <button  class="btn btn-outline-secondary" type="button" id="buscar-prof"
+                             (click)="carregarCardsNome()">
+                        <img width="20" src="../../assets/images/lupa.png">
+                    </button>
+                </div>
             </div>
-        </div>
+        </form>
         
         <a id="login" data-toggle="modal" data-target="#modalLogin">Login</a>
         <button type="button" class="btn btn-outline-primary" 

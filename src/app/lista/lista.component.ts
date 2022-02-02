@@ -16,6 +16,10 @@ export class ListaComponent implements OnInit {
     "estiloMusical": new FormControl(null, Validators.required)
   });
 
+  buscarNomeForm: FormGroup = new FormGroup({
+    "nomeArtista": new FormControl(null, Validators.required)
+  });
+
   artistasTotal: artista[] = MOCK_ARTISTAS;
 
   artistas: artista[] = [];
@@ -74,8 +78,18 @@ export class ListaComponent implements OnInit {
     this.carregarCardsEstilo();
   }
 
+  carregarCardsNome() {
+    this.artistasTotal = MOCK_ARTISTAS.filter(art => art.nome === this.nomeArtista);
+    this.artistasTotal.forEach(art => art.nomeImagem = `../../assets/images/${art.nomeImagem}`);
+    this.controleQuantidade();
+  }
+
   get estiloMusical() {
     return this.buscarEstiloForm.get('estiloMusical')?.value;
+  }
+
+  get nomeArtista() {
+    return this.buscarNomeForm.get('nomeArtista')?.value;
   }
 
 }
