@@ -26,7 +26,7 @@
             <input type="text" class="form-control buscar-profissional" 
                     placeholder="Pesquise por bandas/artistas" aria-describedby="buscar-prof"
                     formControlName="nomeArtista">
-            <div class="input-group-append">
+            <div class="input-group-append mr-3">
                 <button  class="btn btn-outline-secondary" type="button" id="buscar-prof"
                          (click)="carregarCardsNome()">
                     <img width="20" src="../../assets/images/lupa.png">
@@ -34,7 +34,7 @@
             </div>
         </div>
     </form>
-    <div class="form-inline ml-3">
+    <div class="form-inline">
         <a id="login" data-toggle="modal" data-target="#modalLogin">Login</a>
         <button type="button" class="btn btn-outline-primary" 
                 data-toggle="modal" data-target="#modalLogin">Anuncie aqui!</button>
@@ -65,7 +65,7 @@
             <img src="../../assets/images/sem-registros.jpg">
             <p>Não foram encontrados registros!</p>
         </div>
-        <div class="mb-3" *ngIf="exibirMais">
+        <div class="mb-3 botao-exibir-mais" *ngIf="exibirMais">
             <button type="button" class="btn btn-dark" (click)="aumentarQuantidadeCards()">Exibir mais</button>
         </div>
     </div>

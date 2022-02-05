@@ -55,7 +55,6 @@ nav a img {
 
 .card-columns {
     column-count: 1;
-    
 }
 
 .buscar-profissional {
@@ -86,9 +85,15 @@ nav a img {
     font-size: 1.2em;
 }
 
-@media (max-width: 398px) { 
+@media (max-width: 414px) { 
     .buscar-profissional {
         width: 220px;
+    }
+}
+
+@media (max-width: 575px) { 
+    .botao-exibir-mais {
+        text-align: left;
     }
 }
 
