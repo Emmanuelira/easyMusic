@@ -36,12 +36,19 @@ export class ListaComponent implements OnInit {
 
   carregarCardsEstilo(tipoPesquisa: string = 'estilo') {
     if(tipoPesquisa === 'estilo') {
+      this.buscarNomeForm.get('nomeArtista')?.setValue(null);
       this.artistasTotal = MOCK_ARTISTAS;
       if(this.estiloMusical !== 'all') {
         this.artistasTotal = MOCK_ARTISTAS.filter(art => art.estiloMusical === this.estiloMusical);
       }
     } else {
-      this.artistasTotal = MOCK_ARTISTAS.filter(art => art.nome === this.nomeArtista);
+      this.buscarEstiloForm.get('estiloMusical')?.setValue(null);
+      this.artistasTotal = [];
+      for(let art of MOCK_ARTISTAS) {
+        if(art.nome.toLowerCase().includes(this.nomeArtista.toLowerCase())) {
+          this.artistasTotal.push(art);
+        }
+      }
     }
     this.artistasTotal.forEach(art => art.nomeImagem = `../../assets/images/${art.nomeImagem}`);
     this.controleQuantidade();

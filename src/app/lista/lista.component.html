@@ -28,7 +28,7 @@
                     formControlName="nomeArtista">
             <div class="input-group-append mr-3">
                 <button  class="btn btn-outline-secondary" type="button" id="buscar-prof"
-                         (click)="pesquisar('nome')">
+                         (click)="pesquisar('nome')" [disabled]="buscarNomeForm.invalid">
                     <img width="20" src="../../assets/images/lupa.png">
                 </button>
             </div>
