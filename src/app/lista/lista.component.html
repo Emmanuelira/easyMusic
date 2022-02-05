@@ -22,7 +22,7 @@
       easyMusic
     </a>
     <form [formGroup]="buscarNomeForm">
-        <div class="input-group">
+        <div class="input-group caixa-busca-prof">
             <input type="text" class="form-control buscar-profissional" 
                     placeholder="Pesquise por bandas/artistas" aria-describedby="buscar-prof"
                     formControlName="nomeArtista">
@@ -44,11 +44,11 @@
     <div class="buscar">
         <form class="form-inline my-2 my-lg-0" [formGroup]="buscarEstiloForm">
             <div class="mr-3">Selecione o estilo musical:</div>
-            <select class="form-control estilo-musical" formControlName="estiloMusical">
+            <select class="form-control estilo-musical mr-3" formControlName="estiloMusical">
                 <option selected disabled value="null">...</option>
                 <option *ngFor="let estilo of estilosMusicais" [value]="estilo.nome">{{ estilo.label }}</option>
             </select>
-            <button [disabled]="buscarEstiloForm.invalid" class="btn btn-outline-success my-2 my-sm-0 ml-3" 
+            <button [disabled]="buscarEstiloForm.invalid" class="btn btn-outline-success my-2 my-sm-0" 
                     (click)="pesquisar()">Pesquisar</button>
         </form>
     </div>

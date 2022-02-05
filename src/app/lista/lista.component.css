@@ -50,6 +50,7 @@ nav a img {
 
 .cards {
     grid-area: cards;
+    text-align: center;
 }
 
 .card-columns {
@@ -83,4 +84,22 @@ nav a img {
 .sem-registros p {
     margin-top: 30px;
     font-size: 1.2em;
+}
+
+@media (max-width: 398px) { 
+    .buscar-profissional {
+        width: 220px;
+    }
+}
+
+@media (max-width: 587px) { 
+    .caixa-busca-prof {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 685px) { 
+    .cards {
+        margin-top: 60px;
+    }
 }
