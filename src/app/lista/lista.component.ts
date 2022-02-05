@@ -13,14 +13,14 @@ export class ListaComponent implements OnInit {
   estilosMusicais: estiloMusical[] = MOCK_ESTILOS_MUSICAIS;
 
   buscarEstiloForm: FormGroup = new FormGroup({
-    "estiloMusical": new FormControl(null, Validators.required)
+    "estiloMusical": new FormControl(localStorage.getItem("estiloMusical"), Validators.required)
   });
 
   buscarNomeForm: FormGroup = new FormGroup({
     "nomeArtista": new FormControl(null, Validators.required)
   });
 
-  artistasTotal: artista[] = MOCK_ARTISTAS;
+  artistasTotal: artista[] = [];
 
   artistas: artista[] = [];
 
@@ -34,13 +34,14 @@ export class ListaComponent implements OnInit {
     this.carregarCardsEstilo();
   }
 
-  carregarCardsEstilo() {
-    this.artistasTotal = MOCK_ARTISTAS;
-    if(!this.estiloMusical) {
-      this.buscarEstiloForm.get('estiloMusical')?.setValue(localStorage.getItem("estiloMusical"));
-    }
-    if(this.estiloMusical !== 'all') {
-      this.artistasTotal = MOCK_ARTISTAS.filter(art => art.estiloMusical === this.estiloMusical);
+  carregarCardsEstilo(tipoPesquisa: string = 'estilo') {
+    if(tipoPesquisa === 'estilo') {
+      this.artistasTotal = MOCK_ARTISTAS;
+      if(this.estiloMusical !== 'all') {
+        this.artistasTotal = MOCK_ARTISTAS.filter(art => art.estiloMusical === this.estiloMusical);
+      }
+    } else {
+      this.artistasTotal = MOCK_ARTISTAS.filter(art => art.nome === this.nomeArtista);
     }
     this.artistasTotal.forEach(art => art.nomeImagem = `../../assets/images/${art.nomeImagem}`);
     this.controleQuantidade();
@@ -52,19 +53,10 @@ export class ListaComponent implements OnInit {
   }
 
   showMore() {
-    if(this.estiloMusical !== 'all') {
-      const total = this.artistas.filter(art => art.estiloMusical === this.estiloMusical);
-      if (total.length > this.artistas.length) {
-        this.exibirMais = true;
-      } else {
-        this.exibirMais = false;
-      }
+    if(this.artistasTotal.length > this.artistas.length) {
+      this.exibirMais = true;
     } else {
-      if(MOCK_ARTISTAS.length > this.artistas.length) {
-        this.exibirMais = true;
-      } else {
-        this.exibirMais = false;
-      }
+      this.exibirMais = false;
     }
   }
 
@@ -73,15 +65,9 @@ export class ListaComponent implements OnInit {
     this.controleQuantidade();
   }
 
-  pesquisar() {
+  pesquisar(tipoPesquisa: string) {
     this.quantidadeCards = 10;
-    this.carregarCardsEstilo();
-  }
-
-  carregarCardsNome() {
-    this.artistasTotal = MOCK_ARTISTAS.filter(art => art.nome === this.nomeArtista);
-    this.artistasTotal.forEach(art => art.nomeImagem = `../../assets/images/${art.nomeImagem}`);
-    this.controleQuantidade();
+    this.carregarCardsEstilo(tipoPesquisa);
   }
 
   get estiloMusical() {
