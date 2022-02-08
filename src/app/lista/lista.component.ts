@@ -28,13 +28,23 @@ export class ListaComponent implements OnInit {
 
   exibirMais: boolean = false;
 
+  loading: boolean = true;
+
   constructor() {}
 
   ngOnInit(): void {
-    this.carregarCardsEstilo();
+    this.loadingFunction();
+    this.carregarCards();
   }
 
-  carregarCardsEstilo(tipoPesquisa: string = 'estilo') {
+  loadingFunction(): void {
+    this.loading = true;
+    setTimeout(()=>{
+      this.loading = false;
+    }, 1000);
+  }
+
+  carregarCards(tipoPesquisa: string = 'estilo'): void {
     if(tipoPesquisa === 'estilo') {
       this.buscarNomeForm.get('nomeArtista')?.setValue(null);
       this.artistasTotal = MOCK_ARTISTAS;
@@ -54,12 +64,13 @@ export class ListaComponent implements OnInit {
     this.controleQuantidade();
   }
 
-  controleQuantidade() {
+  controleQuantidade(): void {
+    this.loadingFunction();
     this.artistas = this.artistasTotal.slice(0,this.quantidadeCards);
     this.showMore();
   }
 
-  showMore() {
+  showMore(): void {
     if(this.artistasTotal.length > this.artistas.length) {
       this.exibirMais = true;
     } else {
@@ -67,14 +78,14 @@ export class ListaComponent implements OnInit {
     }
   }
 
-  aumentarQuantidadeCards() {
+  aumentarQuantidadeCards(): void {
     this.quantidadeCards += 10;
     this.controleQuantidade();
   }
 
-  pesquisar(tipoPesquisa: string) {
+  pesquisar(tipoPesquisa: string): void {
     this.quantidadeCards = 10;
-    this.carregarCardsEstilo(tipoPesquisa);
+    this.carregarCards(tipoPesquisa);
   }
 
   get estiloMusical() {

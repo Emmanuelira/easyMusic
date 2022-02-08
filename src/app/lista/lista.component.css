@@ -85,6 +85,10 @@ nav a img {
     font-size: 1.2em;
 }
 
+.loading {
+    opacity: 0.2;
+}
+
 @media (max-width: 414px) { 
     .buscar-profissional {
         width: 220px;

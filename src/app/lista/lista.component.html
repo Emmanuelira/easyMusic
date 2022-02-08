@@ -1,5 +1,5 @@
 <!-- Modal login e anúncio -->
-<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="ModalLogin" aria-hidden="true">
+<div class="modal fade" [class.loading]="loading" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="ModalLogin" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,7 +16,7 @@
 </div>
 
 <!--Página de lista-->
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light bg-light" [class.loading]="loading">
     <a class="navbar-brand" routerLink="/">
       <img src="../../assets/images/logo.png" class="d-inline-block align-top">
       easyMusic
@@ -40,7 +40,12 @@
                 data-toggle="modal" data-target="#modalLogin">Anuncie aqui!</button>
     </div>
 </nav>
-<div class="listagem">
+<div class="listagem" [class.loading]="loading">
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
     <div class="buscar">
         <form class="form-inline my-2 my-lg-0" [formGroup]="buscarEstiloForm">
             <div class="mr-3">Selecione o estilo musical:</div>
@@ -70,3 +75,9 @@
         </div>
     </div>
 </div>
+
+<sa-spinner-circular [size]="60" [thickness]="100" [speed]="100" 
+                     color="rgba(108, 57, 172, 1)" secondaryColor="rgba(24, 24, 24, 0.1)"
+                     styles='{"position": "fixed", "width": "100%", "top": "50%"}'
+                     [enabled]="loading">
+</sa-spinner-circular>
